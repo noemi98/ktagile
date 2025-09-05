@@ -1,0 +1,143 @@
+{
+  "spaces": [
+    {
+      "id": "1",
+      "title": "SMART TJ4",
+      "description": "Tareas sobre la plataforma SMART TJU, las cuales tienes que culminarse a fin de mes para llamar a reunión con el cliente",
+      "status": "Finalizado"
+    },
+    {
+      "id": "2",
+      "title": "ECAM EXTRANET",
+      "description": "Tareas sobre la plataforma de inscripciones ECAM EXTRANET",
+      "status": "Finalizado"
+    },
+    {
+      "id": "3",
+      "title": "Pendientes diversos AGOSTO",
+      "description": "Tareas restantes en cuenta a mejoras de desarrollos web",
+      "status": "En progreso"
+    },
+    {
+      "id": "98d2",
+      "title": "MOODLE",
+      "description": "Pendientes sobre las mejoras para MOODLE tanto para ECAM como para RILEY"
+    },
+    {
+      "id": "50fe",
+      "title": "Actividades recreativas 2025",
+      "description": "Listado de propuestas sobre las actividades recreativas para el personal, durante el 2025"
+    },
+    {
+      "id": "f1ea",
+      "title": "Próximos cursos a aperturarse",
+      "description": "Listado de curso de la empresa, que se aperturarán en los próximos 6 meses"
+    },
+    {
+      "id": "4f32",
+      "title": "EQUIPO DE FINANZAS",
+      "description": "Trabajos pendientes a coordinar con el equipo de finanzas"
+    },
+    {
+      "id": "a642",
+      "title": "AREA DE SISTEMAS",
+      "description": "Tareas para mejorar los servidores"
+    },
+    {
+      "id": "3ad1",
+      "title": "AREA DE INTELIGENCIA 2",
+      "description": "Tareas del área de inteligencia"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Enviar el aviso de forma masiva a los proveedores",
+      "description": "Elaborar y enviar un afiche sobre los próximos cambios a considera en la plataforma",
+      "status": "Por hacer",
+      "priority": "Alta",
+      "limit": "2024-08-30",
+      "spaceId": 3
+    },
+    {
+      "id": "2",
+      "title": "Añadir las mejoras acordadas en reunión",
+      "description": "Implementar la lista de mejoras sugeridad por el cliente",
+      "status": "Por hacer",
+      "priority": "Media",
+      "limit": "2024-08-15",
+      "spaceId": 3
+    },
+    {
+      "id": "3",
+      "title": "Configurar moodle para el nuevo curso",
+      "description": "Carar los recursos necesarioa para el nuevo curso",
+      "status": "En progreso",
+      "priority": "Baja",
+      "limit": "2024-08-18",
+      "spaceId": 3
+    },
+    {
+      "id": "4",
+      "title": "Habilitar una tarea para la actualización de datos",
+      "description": "Crear un SP y programar una tarea para la actualización de datos",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-12",
+      "spaceId": 3
+    },
+    {
+      "id": "5",
+      "title": "Realizar el pago del hosting",
+      "description": "Contactarse con el proveedor para realizar el pago del hosting",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-20",
+      "spaceId": 3
+    },
+    {
+      "id": "6",
+      "title": "Agregar personal",
+      "description": "Agregar el formulario para registro de personal",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-20",
+      "spaceId": 1
+    },
+    {
+      "id": "7",
+      "title": "Agregar vehículo",
+      "description": "Agregar el formulario para registro de vehículo y vincularlo al persona como chofer",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-20",
+      "spaceId": 1
+    },
+    {
+      "id": "8",
+      "title": "Agregar documento",
+      "description": "Agregar el formulario para registro de personal",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-20",
+      "spaceId": 2
+    },
+    {
+      "id": "9",
+      "title": "Agregar cliente",
+      "description": "Agregar el formulario para registro de vehículo y vincularlo al persona como chofer",
+      "status": "Hecho",
+      "priority": "Baja",
+      "limit": "2024-08-20",
+      "spaceId": 2
+    },
+    {
+      "id": "10",
+      "title": "Incorporar el módulo de consultas",
+      "description": "Agregar el nuevo menú",
+      "dueDate": "2024-08-22",
+      "priority": "Alta",
+      "spaceId": 2
+    }
+  ]
+}
