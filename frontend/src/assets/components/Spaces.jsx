@@ -146,7 +146,7 @@ export const Spaces = () => {
       <div className='p-5'>
          <div className='box'>
             <div className="field" style={{ textAlign: 'center' }}>
-               <h1 className="subtitle">Listado de proyectos / espacios de trabajo</h1>
+               <h1 className="subtitle"><strong>Estos son tus proyectos o espacios de trabajo</strong></h1>
                <button className="button is-primary is-rounded is-small" onClick={() => handleNew()} title='Nuevo espacio de trabajo' id="plus"><span className='has-text-primary-20-invert'>+</span></button>
             </div>
          </div>

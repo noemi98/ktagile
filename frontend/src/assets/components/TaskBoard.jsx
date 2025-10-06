@@ -281,10 +281,10 @@ export const TaskBoard = () => {
          <div className="column" id="panel-board">
             <div className="box header is-flex is-justify-content-space-between is-align-items-center">
                <div className="is-flex is-align-items-center">
-                  <h2 className="title is-4 is-spaced bd-anchor-title"><strong>Tablero Kanban</strong></h2>&nbsp;-&nbsp;
+                  <h2 className="title is-4 is-spaced bd-anchor-title" style={{paddingRight: '5px'}}><strong>Tablero Kanban</strong></h2>
                   <h2 className='subtitle is-4 is-spaced bd-anchor-title'>{nameSpace}</h2>
                </div>
-               <button style={{with:'10px', position:'relative', left: '28px'}} data-tooltip="Uso: Haz clic en la tarea para quitarla del tablero. Haz clic derecho para moverla a la siguiente categoría."><i className="fa fa-question-circle"></i></button>
+               <button style={{width:'10px', position:'relative', left: '28px'}} data-tooltip="Uso: Haz clic en la tarea para quitarla del tablero. Haz clic derecho para moverla a la siguiente categoría."><i className="fa fa-question-circle"></i></button>
                <button className="button is-primary" onClick={toggleModalCatOpen}>Crear</button>
             </div>
             <div className='box tableroKanban'>
@@ -330,7 +330,6 @@ export const TaskBoard = () => {
                      </tbody>
                   </table>
                   )}
-                  
                </div>
             </div>
          </div>

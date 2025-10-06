@@ -19,6 +19,7 @@ connection.connect(err => {
       console.error('Error al conectar a la base de datos:', err);
       setTimeout(createConnection, 5000); // Reconectar después de 5s
    }
+   console.log('Conectado a la base de datos MySQL');
 });
 
 // Manejo de desconexión

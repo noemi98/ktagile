@@ -1,12 +1,120 @@
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const connection = require('./db');
+const saltRounds = 10;
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+const verifyToken = require('./auth');
 const app = express();
 
 // Habilitar CORS
-app.use(cors());
+//app.use(cors());
+
+app.use(cors({
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    credentials: true
+}));
 
 app.use(express.json());
+app.use(cookieParser());
+
+//Endpoint: Crear usuario
+app.post('/api/ktagile/users/create', (req, res) => {
+    const { username, password, firstname, lastname } = req.body;
+    if (!username || !password || !firstname || !lastname) {
+        return res.status(400).json({ error: 'Faltan campos obligatorios' });
+    }
+    bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+        if (err) {
+            console.error('Error al hashear:', err);
+            return res.status(500).json({ error: 'Error al procesar contraseña' });
+        }
+        connection.query(
+            'INSERT INTO users (username, password, firstname, lastname) VALUES (?, ?, ?, ?)',
+            [username, hashedPassword, firstname, lastname],
+            (err, result) => {
+                if (err) {
+                    console.error('Error al crear usuario:', err);
+                    return res.status(500).json({ error: 'Error al crear usuario' });
+                }
+                res.status(201).json({ message: 'Usuario creado correctamente', userId: result.insertId });
+            }
+        );
+    });
+});
+
+//Endpoint: Validar usuario
+app.post('/api/ktagile/users/validate', (req, res) => {
+    const { username, password } = req.body;
+    connection.query('SELECT * FROM users WHERE username = ? AND enabled = 1 LIMIT 1', [username], (error, results) => {
+        if (error) {
+            console.error('Error en la consulta:', error);
+            return res.status(500).json({ error: 'Error interno del servidor' });
+        }
+
+        if (!results || results.length === 0) {
+            return res.status(401).json({ error: 'Usuario no encontrado o deshabilitado' });
+        }
+        const user = results[0];
+        bcrypt.compare(password, user.password, (err, match) => {
+            if (err) {
+                console.error('Error al comparar contraseñas:', err);
+                return res.status(500).json({ error: 'Error interno del servidor' });
+            }
+            if (!match) {
+                return res.status(401).json({ error: 'Contraseña incorrecta' });
+            }
+            //Generar el TOKEN
+            const token = jwt.sign(
+                {
+                    id: user.id,
+                    username: user.username,
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                },
+                process.env.JWT_SECRET,
+                { expiresIn: '1d' }
+            );
+            //Enviar el TOKEN al COOKIE
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure: false, // Producción: TRUE
+                sameSite: 'lax',
+                maxAge: 24 * 60 * 60 * 1000 // 1 día
+            });
+            res.json({
+                message: 'Login exitoso',
+                user: { 
+                    id: user.id,
+                    username: user.username,
+                    firstname: user.firstname,
+                    lastname: user.lastname,
+                }
+            });
+        });
+    });
+});
+
+//Endpoint: Obtener datos del usuario
+app.get('/api/ktagile/users/info', verifyToken, (req, res) => {
+    res.json({
+        id: req.user.id,
+        username: req.user.username,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname
+    });
+});
+
+//Endpoint: Cerrar sesión
+app.post('/api/ktagile/users/logout', (req, res) => {
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: false, // Producción: TRUE
+        sameSite: 'Lax'
+    });
+    res.json({ message: 'Sesión cerrada correctamente' });
+});
 
 //Endpoint: Listar espacios de trabajo
 app.get('/api/ktagile/spaces/getdata', (req, res) => {
