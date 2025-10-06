@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+ktagile
+ktagile_a_medias
 dist
 dist-ssr
 *.local
@@ -22,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+KT Agile.pptx
+ktagile_git.zip
+ktagile.zip
+BoardKanban.rar
