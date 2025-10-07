@@ -11,7 +11,9 @@ export const Spaces = () => {
    const [spaces, setSpaces] = useState([]);
    const fetchSpaces = async () => {
       try {
-         const response = await api.get('/api/ktagile/spaces/getdata');
+         const response = await api.get('/api/ktagile/spaces/getdata', {
+            withCredentials: true
+         });
          setSpaces(response.data);
       } catch (error) {
          console.error("Error obteniendo los SPACES:", error);
@@ -87,7 +89,9 @@ export const Spaces = () => {
    
    //Creación
    const handleSaveCreate = () => {
-      api.post(`/api/ktagile/spaces/insertdata`, currentSpace)
+      api.post(`/api/ktagile/spaces/insertdata`, currentSpace, {
+         withCredentials: true
+      })
          .then(({data})=>{
             // Actualiza la lista de spaces / actualización en el estado
             setSpaces(prevSpaces => [...prevSpaces, data]);

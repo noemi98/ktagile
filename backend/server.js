@@ -117,8 +117,9 @@ app.post('/api/ktagile/users/logout', (req, res) => {
 });
 
 //Endpoint: Listar espacios de trabajo
-app.get('/api/ktagile/spaces/getdata', (req, res) => {
-    connection.query('SELECT * FROM spaces WHERE enabled=1', (err, results) => {
+app.get('/api/ktagile/spaces/getdata', verifyToken, (req, res) => {
+    const user_id = req.user.id;
+    connection.query('SELECT * FROM spaces WHERE enabled=1 and user_id=?', [user_id], (err, results) => {
         if(err){
             return res.status(500).json({ error: 'Error al consultar la base de datos' });
         }
@@ -138,9 +139,10 @@ app.get('/api/ktagile/tasks/getdata/:spaceId', (req, res) => {
 });
 
 //Endpoint: Insertar un espacio de trabajo
-app.post('/api/ktagile/spaces/insertdata', (req, res) => {
+app.post('/api/ktagile/spaces/insertdata', verifyToken, (req, res) => {
     const { title, description, status} = req.body;
-    connection.query('INSERT INTO spaces (title, description, status) VALUES (?, ?, ?)', [title, description, status], (err, results) =>{
+    const user_id = req.user.id;
+    connection.query('INSERT INTO spaces (user_id, title, description, status) VALUES (?, ?, ?, ?)', [user_id, title, description, status], (err, results) =>{
         if(err){
             return res.status(500).json({error: 'Error al insertar los datos'});
         }
