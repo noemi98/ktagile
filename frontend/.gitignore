@@ -10,9 +10,12 @@ lerna-debug.log*
 node_modules
 ktagile
 ktagile_a_medias
+ktagile_funciona
 dist
 dist-ssr
 *.local
+.env.production
+ktagile_funciona_creo.zip
 
 # Editor directories and files
 .vscode/*
