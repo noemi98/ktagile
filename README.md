@@ -11,7 +11,9 @@ Tablero Kanban funcional desarrollado con React (frontend) y Express + MySQL (ba
 
 ### 🚀 Demo en vivo
 
-🔗 Acceder al demo (www.noecer.com/ktagile)
+🔗 Acceder al demo (www.noecer.com/ktagile)  
+👤 Usuario: **user_public**  
+🔒 Contraseña: **12345678**  
 
 ### 🛠️ Tecnologías utilizadas
 
@@ -52,7 +54,7 @@ kanban/
 
 ### 📌 Roadmap (Próximas mejoras)
 
-- [ ] Autenticación con login/registro.
+- [x] Autenticación con login (datos filtrados por usuario).
 - [ ] Drag & drop para mover tareas entre categorías.
 - [ ] Colores personalizables por categoría.
-- [ ] Diseño responsive.
+- [x] Diseño responsive.
